@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mongodb
 spec:
-  replicas: 1  # Only one MongoDB instance
+  serviceName: "mongodb-service"  # Headless service for stable network identity
+  replicas: 1 
   selector:
     matchLabels:
       app: mongodb
@@ -27,7 +28,11 @@ spec:
           limits:
             cpu: "500m"
             memory: "512Mi"
-      volumes:
-      - name: mongodb-storage
-        persistentVolumeClaim:
-          claimName: mongodb-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 5Gi

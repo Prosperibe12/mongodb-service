@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: mongodb-service
 spec:
+  clusterIP: None  # Headless service for stable DNS
   selector:
     app: mongodb
   ports:
