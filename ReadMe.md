@@ -8,7 +8,7 @@ To install the MongoDB service, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/mongodb-service.git
+    https://github.com/Prosperibe12/mongodb-service.git
     ```
 2. Navigate to the project directory:
     ```bash
